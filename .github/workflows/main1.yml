@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1     # 只拉最新代码（关键！）
-          ref: main
+          ref: master
 
       - name: 配置Git
         run: |
@@ -25,11 +25,11 @@ jobs:
       - name: 拉取原仓库更新
         run: |
           git remote add upstream https://github.com/xiongjian83/TV1.git
-          git fetch upstream main --depth 1
+          git fetch upstream master --depth 1
 
       - name: 合并并推送
         run: |
-          git merge upstream/main --no-edit || exit 0
-          git push origin main
+          git merge upstream/master --no-edit || exit 0
+          git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
